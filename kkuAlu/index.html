@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ศิษย์เก่าสัมพันธ์ มหาวิทยาลัยขอนแก่น</title>
+    <!-- Google Font: Sarabun -->
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --kku-red: #A7333F;
+            --bg-gray: #eeeeee;
+        }
+        body {
+            font-family: 'Sarabun', sans-serif;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        /* Header & Nav Setup */
+        .top-header {
+            background-color: var(--bg-gray);
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .navbar-brand img {
+            height: 60px;
+            margin-right: 15px;
+        }
+        .brand-text {
+            display: inline-block;
+            vertical-align: middle;
+            color: #555;
+            line-height: 1.2;
+        }
+        .brand-text .main-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #444;
+        }
+        /* Menu Styling */
+        .nav-link {
+            color: #555 !important;
+            font-weight: 500;
+            padding: 15px 20px !important;
+        }
+        .nav-item.active-nav .nav-link {
+            background-color: #eeeeee;
+            
+        }
+        .dropdown-toggle::after {
+            vertical-align: middle;
+        }
+        /* Search Box */
+        .search-container {
+            position: relative;
+        }
+        .search-input {
+            border: 1px solid #ccc;
+            padding: 5px 10px 5px 35px;
+            border-radius: 4px;
+            background-color: #fff;
+            width: 180px;
+        }
+        .search-icon {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+        }
+        /* Banner Section */
+        .banner-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            position: relative;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+<header class="top-header">
+    <div class="container d-flex justify-content-between align-items-center">
+        <!-- Logo & Title -->
+        <div class="d-flex align-items-center">
+            <img src="images/official-logo.png" alt="KKU Logo" style="height: 60px;">
+            <div class="brand-text">
+                <div class="main-title">ศิษย์เก่าสัมพันธ์</div>
+                <div class="small text-muted">Alumni Relations of KKU</div>
+            </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="navbar navbar-expand-lg p-0">
+            <ul class="navbar-nav align-items-center">
+                <li class="nav-item active-nav"><a class="nav-link" href="#">หน้าหลัก</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">งานศิษย์เก่าสัมพันธ์</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">โครงสร้างองค์กร</a></li>
+                        <li><a class="dropdown-item" href="#">พันธกิจ</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">ศิษย์เก่า</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">สมาคมศิษย์เก่า</a></li>
+                        <li><a class="dropdown-item" href="#">ฐานข้อมูลศิษย์เก่า</a></li>
+                    </ul>
+                </li>
+                <!-- ส่วนที่คุณต้องการ -->
+                <li class="nav-item dropdown text-danger">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">โครงการ</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="1000.html">พี่น้องให้กองละ 1,000 บาท</a></li>
+                        <li><a class="dropdown-item" href="dream-birthday.html">โครงการทอฝันในวันเกิด</a></li>
+                    </ul>
+                </li>
+                <!-- Search Box -->
+                <li class="nav-item ms-3">
+                    <div class="search-container">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" class="search-input" placeholder="ค้นหา">
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Banner Section - จัดให้อยู่ตรงกลาง -->
+<div class="container my-4"> <!-- container จะช่วยบีบเนื้อหาเข้ากึ่งกลางหน้าจอ -->
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-11"> <!-- ปรับความกว้างให้เกือบเต็มแต่ยังเห็นขอบ -->
+            
+            <div id="centralAlumniSlider" class="carousel slide shadow-lg" data-bs-ride="carousel">
+                
+                <!-- จุดบอกตำแหน่ง (Indicators) -->
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#centralAlumniSlider" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#centralAlumniSlider" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#centralAlumniSlider" data-bs-slide-to="2"></button>
+                </div>
+
+                <!-- รายการรูปภาพ -->
+                <div class="carousel-inner rounded-4"> <!-- เพิ่มขอบมนเพื่อความทันสมัย -->
+                    
+                    <!-- รูปที่ 1 -->
+                    <div class="carousel-item active" data-bs-interval="4000">
+                        <img src="images/สำเนาของ-ปกศิษย์เก่า.jpg" class="d-block w-100 banner-custom-height" alt="ประกาศรายชื่อ">
+                    </div>
+
+                    <!-- รูปที่ 2 -->
+                    <div class="carousel-item" data-bs-interval="4000">
+                        <img src="images/Smart-Slider.png" class="d-block w-100 banner-custom-height" alt="Smart Slider">
+                        
+                    </div>
+
+                </div>
+
+                <!-- ปุ่มควบคุม ซ้าย-ขวา -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#centralAlumniSlider" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon p-3 bg-dark rounded-circle" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#centralAlumniSlider" data-bs-slide="next">
+                    <span class="carousel-control-next-icon p-3 bg-dark rounded-circle" aria-hidden="true"></span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <!-- หัวข้อข่าวประชาสัมพันธ์ -->
+    <div class="text-center mb-4">
+        <h3 class="fw-bold"><img src="news-icon.png" width="40" class="me-2">ข่าวประชาสัมพันธ์</h3>
+    </div>
+
+    <!-- ส่วนแถบเมนู (Tabs) -->
+    <ul class="nav nav-tabs border-bottom-0" id="newsTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active fw-bold text-success" id="general-tab" data-bs-toggle="tab" data-bs-target="#general" type="button" role="tab">ข่าวประชาสัมพันธ์</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link text-info" id="activity-tab" data-bs-toggle="tab" data-bs-target="#activity" type="button" role="tab">ข่าวกิจกรรม</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link text-info" id="club-tab" data-bs-toggle="tab" data-bs-target="#club" type="button" role="tab">ข่าวชมรม-สมาคมศิษย์เก่า</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link text-info" id="congrat-tab" data-bs-toggle="tab" data-bs-target="#congrat" type="button" role="tab">ข่าวชื่นชมยินดี</button>
+        </li>
+    </ul>
+
+    <!-- ส่วนเนื้อหาของข่าว (Tab Content) -->
+    <div class="tab-content border-top p-4 bg-light rounded-bottom shadow-sm" id="newsTabContent">
+        <div class="tab-pane fade show active" id="general" role="tabpanel">
+            <div class="row g-4">
+                
+                <!-- ข่าวที่ 1 -->
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                        <img src="news1.jpg" class="card-img-top" alt="News 1">
+                        <div class="card-body">
+                            <p class="card-text small">ประกาศรายชื่อศิษย์เก่าดีเด่นมหาวิทยาลัยขอนแก่น ประจำคณะ / วิทยาลัย ประจำปี 2568 จำนวน 24 ท่าน</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ข่าวที่ 2 -->
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                        <img src="news2.jpg" class="card-img-top" alt="News 2">
+                        <div class="card-body">
+                            <p class="card-text small">📣 มหาวิทยาลัยขอนแก่น ขอเชิญร่วมทำบุญตักบาตรและทอดผ้าป่าเพื่อการศึกษาเนื่องในโอกาสวันคล้ายวันสถาปนามหาวิทยาลัยขอนแก่น ครบรอบ 62 ปี</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ข่าวที่ 3 -->
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                        <img src="news3.jpg" class="card-img-top" alt="News 3">
+                        <div class="card-body">
+                            <p class="card-text small">ขอเชิญลงทะเบียนเข้าร่วมกิจกรรมสานสัมพันธ์ศิษย์เก่ามหาวิทยาลัยขอนแก่น สปป.ลาว : ครบรอบ 75 ปี ความสัมพันธ์ทางการทูต ไทย-ลาว</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="mt-3 text-start">
+                <a href="#" class="text-decoration-none text-muted small">Read More.</a>
+            </div>
+        </div>
+        
+        <!-- ส่วนข่าวอื่นๆ (ใส่โครงสร้างเหมือนข้างบน) -->
+        <div class="tab-pane fade" id="activity" role="tabpanel">เนื้อหาข่าวกิจกรรม...</div>
+    </div>
+</div>
+
+
+<style>
+    /* ตั้งค่าความกว้างและความสูงให้ตรงกลาง */
+    .banner-custom-height {
+        height: 450px; /* ปรับระดับความสูงตามต้องการ */
+        object-fit: cover; /* ป้องกันภาพเบี้ยว */
+        border-radius: 15px; /* ขอบมนเพื่อให้รับกับกรอบ */
+    }
+
+    /* ตกแต่งกล่องข้อความบนแบนเนอร์ */
+    .caption-box {
+        background: rgba(0, 0, 0, 0.6);
+        padding: 15px 25px;
+        border-radius: 10px;
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+    
+    .caption-box.bg-red {
+        background: rgba(167, 51, 63, 0.8); /* สีแดง มข. */
+    }
+
+    /* จัดเงาให้ภาพดูเด่นออกมาจากพื้นหลัง */
+    .shadow-lg {
+        box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

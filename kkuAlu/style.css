@@ -1,0 +1,25 @@
+.nav-tabs .nav-link {
+    border: none;
+    background-color: transparent;
+    padding: 10px 20px;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #f8f9fa !important; /* สีเดียวกับพื้นหลัง Content */
+    border-radius: 10px 10px 0 0;
+    border: 1px solid #dee2e6;
+    border-bottom: none;
+}
+
+.card {
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-text {
+    color: #444;
+    line-height: 1.6;
+}

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>พี่ให้น้องกองละ 1,000 บาท - ศิษย์เก่าสัมพันธ์ มข.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+        :root {
+            --kku-red: #A7333F;
+            --bg-gray: #eeeeee;
+        }
+        body {
+            font-family: 'Sarabun', sans-serif;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        /* Header & Nav Setup */
+        .top-header {
+            background-color: var(--bg-gray);
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .navbar-brand img {
+            height: 60px;
+            margin-right: 15px;
+        }
+        .brand-text {
+            display: inline-block;
+            vertical-align: middle;
+            color: #555;
+            line-height: 1.2;
+        }
+        .brand-text .main-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #444;
+        }
+        /* Menu Styling */
+        .nav-link {
+            color: #555 !important;
+            font-weight: 500;
+            padding: 15px 20px !important;
+        }
+        .nav-item.active-nav .nav-link {
+            background-color: #eeeeee;
+            
+        }
+        .dropdown-toggle::after {
+            vertical-align: middle;
+        }
+        /* Search Box */
+        .search-container {
+            position: relative;
+        }
+        .search-input {
+            border: 1px solid #ccc;
+            padding: 5px 10px 5px 35px;
+            border-radius: 4px;
+            background-color: #fff;
+            width: 180px;
+        }
+        .search-icon {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+        }
+        /* Banner Section */
+        .banner-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            position: relative;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v18.0"></script>
+<header class="top-header">
+    <div class="container d-flex justify-content-between align-items-center">
+        <!-- Logo & Title -->
+        <div class="d-flex align-items-center">
+            <img src="images/official-logo.png" alt="KKU Logo" style="height: 60px;">
+            <div class="brand-text">
+                <div class="main-title">ศิษย์เก่าสัมพันธ์</div>
+                <div class="small text-muted">Alumni Relations of KKU</div>
+            </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="navbar navbar-expand-lg p-0">
+            <ul class="navbar-nav align-items-center">
+                <li class="nav-item active-nav"><a class="nav-link" href="index.html">หน้าหลัก</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">งานศิษย์เก่าสัมพันธ์</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">โครงสร้างองค์กร</a></li>
+                        <li><a class="dropdown-item" href="#">พันธกิจ</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">ศิษย์เก่า</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">สมาคมศิษย์เก่า</a></li>
+                        <li><a class="dropdown-item" href="#">ฐานข้อมูลศิษย์เก่า</a></li>
+                    </ul>
+                </li>
+                <!-- ส่วนที่คุณต้องการ -->
+                <li class="nav-item dropdown text-danger">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">โครงการ</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="1000.html">พี่น้องให้กองละ 1,000 บาท</a></li>
+                        <li><a class="dropdown-item" href="dream-birthday.html">โครงการทอฝันในวันเกิด</a></li>
+                    </ul>
+                </li>
+                <!-- Search Box -->
+                <li class="nav-item ms-3">
+                    <div class="search-container">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" class="search-input" placeholder="ค้นหา">
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+    <style>
+        body { font-family: 'Sarabun', sans-serif; background-color: #f5f5f5; color: #333; }
+        .container-main { background: white; padding: 30px; border-radius: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        
+        /* Breadcrumb/Meta Style */
+        .post-meta { font-size: 13px; color: #888; margin-bottom: 20px; }
+        .post-meta span { margin-right: 15px; }
+        
+        /* Content Area */
+        .content-title { font-weight: bold; color: #333; margin-bottom: 20px; }
+        .main-image { width: 100%; border-radius: 5px; margin-bottom: 25px; }
+        .description-text { line-height: 1.8; text-indent: 50px; text-align: justify; margin-bottom: 20px; }
+
+        /* Sidebar Styles */
+        .sidebar-title-btn {
+            background-color: #B2CC1C; /* สีเขียวมะนาวตามรูป */
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: block;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+        .sidebar-widget {
+            border: 1px solid #eee;
+            background: white;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-top: 3px solid #ddd;
+        }
+        .widget-title {
+            font-size: 16px;
+            font-weight: bold;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            text-align: center;
+            background: repeating-linear-gradient(45deg, #f9f9f9, #f9f9f9 10px, #fff 10px, #fff 20px);
+        }
+
+        /* Footer/Contact in Content */
+        .contact-section img { max-width: 250px; border: 1px solid #ddd; padding: 5px; }
+        .contact-info { font-size: 14px; padding-left: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="container my-5">
+    <div class="row">
+        <!-- ฝั่งซ้าย: เนื้อหาหลัก (8 ส่วน) -->
+        <div class="col-lg-8">
+            <div class="container-main">
+                <h2 class="content-title">พี่ให้น้องกองละ 1,000 บาท</h2>
+                
+                <div class="post-meta">
+                    <span><i class="far fa-clock"></i> 25 พฤศจิกายน 2562</span>
+                    <span><i class="far fa-user"></i> admin</span>
+                    <span><i class="far fa-folder"></i> เมนู, โครงการระดมทุนการศึกษา</span>
+                </div>
+
+                <img src="images/4.png" class="main-image" alt="ภาพโครงการ">
+
+                <div class="description-text">
+                    กองพัฒนานักศึกษาและศิษย์เก่าสัมพันธ์ มหาวิทยาลัยขอนแก่น เชิญชวนศิษย์เก่ามหาวิทยาลัยขอนแก่นและผู้มีจิตศรัทธาร่วมบริจาค โครงการระดมทุนเพื่อการศึกษา "พี่ให้น้องกองละ 1,000 บาท" ปีที่ 5 เพื่อมอบทุนการศึกษาแก่นักศึกษามหาวิทยาลัยขอนแก่นที่ยังขาดแคลนทุนทรัพย์... (เนื้อหาตามในรูป)
+                </div>
+
+                <div class="description-text">
+                    หากท่านประสงค์ร่วมบริจาคสมทบทุนเพื่อการศึกษา สามารถบริจาคทาง QR code เพื่อบริจาคผ่านระบบ e-Donation หรือ โอนเงินเข้าบัญชี ธนาคารไทยพาณิชย์ ชื่อบัญชี โครงการระดมทุนเพื่อการศึกษา (พี่ให้น้องกองละ 1,000 บาท) เลขที่บัญชี 407-444818-7 สาขาสํานักงานอธิการบดี มหาวิทยาลัยขอนแก่น...
+                </div>
+
+                <!-- ส่วนติดต่อสอบถามด้านล่างเนื้อหา -->
+                <div class="row mt-5 contact-section">
+                    <div class="col-md-5">
+                        <img src="images/สำเนาของ-พี่ให้น้อง-2.png" class="img-fluid" alt="QR Code บริจาค"> 
+                    </div>
+                    <div class="col-md-7 contact-info">
+                        <p><strong>สอบถามรายละเอียดเพิ่มเติมได้ที่</strong></p>
+                        <p>งานศิษย์เก่าสัมพันธ์ กองพัฒนานักศึกษาและศิษย์เก่าสัมพันธ์</p>
+                        <p>โทรศัพท์/โทรสาร 0-4320-2525 มือถือ 08-8574-9091</p>
+                        <p>Line id :: kkualumni</p>
+                        <p>Facebook :: FB/AlumniRelationsKKU</p>
+                        <p>mail :: kkuoaa@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ฝั่งขวา: Sidebar (4 ส่วน) -->
+        <div class="col-lg-4">
+            <!-- ปุ่มตรวจสอบรายชื่อ -->
+            <a href="#" class="sidebar-title-btn">ตรวจสอบรายชื่อศิษย์เก่า</a>
+
+            <!-- Facebook Plugin Box -->
+            <div class="sidebar-widget">
+                <div class="widget-title">////////// Facebook //////////</div>
+                <div class="fb-page" 
+                    data-href="https://www.facebook.com/AlumniRelationsKKU" 
+                    data-tabs="timeline" 
+                    data-width="" 
+                    data-height="500" 
+                    data-small-header="false" 
+                    data-adapt-container-width="true" 
+                    data-hide-cover="false" 
+                    data-show-facepile="true">
+                    <blockquote cite="https://www.facebook.com/AlumniRelationsKKU" class="fb-xfbml-parse-ignore">
+                        <a href="https://www.facebook.com/AlumniRelationsKKU">ศิษย์เก่าสัมพันธ์ มหาวิทยาลัยขอนแก่น</a>
+                    </blockquote>
+                </div>
+            </div>
+
+            <!-- ข่าวล่าสุด Box -->
+            <div class="sidebar-widget">
+                <div class="widget-title">////////// ข่าวล่าสุด //////////</div>
+                <div class="mb-3">
+                    <img src="news1.jpg" class="w-100 mb-2 rounded" alt="ข่าวด่วน">
+                    <p class="small fw-bold mb-1" style="color: #A7333F;">ประกาศรายชื่อศิษย์เก่าดีเด่น ประจำปี 2568</p>
+                    <p class="text-muted" style="font-size: 11px;">14 มกราคม 2569</p>
+                </div>
+                <hr>
+                <div class="mb-3">
+                    <img src="news2.jpg" class="w-100 mb-2 rounded" alt="ข่าวด่วน">
+                    <p class="small fw-bold mb-1">มหาวิทยาลัยขอนแก่น ขอเชิญร่วมทอดผ้าป่า...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

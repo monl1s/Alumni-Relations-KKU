@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โครงการทอฝันในวันเกิด - ศิษย์เก่าสัมพันธ์ มข.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --kku-red: #A7333F;
+            --bg-gray: #eeeeee;
+        }
+        body {
+            font-family: 'Sarabun', sans-serif;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        /* Header & Nav Setup */
+        .top-header {
+            background-color: var(--bg-gray);
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .navbar-brand img {
+            height: 60px;
+            margin-right: 15px;
+        }
+        .brand-text {
+            display: inline-block;
+            vertical-align: middle;
+            color: #555;
+            line-height: 1.2;
+        }
+        .brand-text .main-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #444;
+        }
+        /* Menu Styling */
+        .nav-link {
+            color: #555 !important;
+            font-weight: 500;
+            padding: 15px 20px !important;
+        }
+        .nav-item.active-nav .nav-link {
+            background-color: #eeeeee;
+            
+        }
+        .dropdown-toggle::after {
+            vertical-align: middle;
+        }
+        /* Search Box */
+        .search-container {
+            position: relative;
+        }
+        .search-input {
+            border: 1px solid #ccc;
+            padding: 5px 10px 5px 35px;
+            border-radius: 4px;
+            background-color: #fff;
+            width: 180px;
+        }
+        .search-icon {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+        }
+        /* Banner Section */
+        .banner-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            position: relative;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v18.0"></script>
+<header class="top-header">
+    <div class="container d-flex justify-content-between align-items-center">
+        <!-- Logo & Title -->
+        <div class="d-flex align-items-center">
+            <img src="images/official-logo.png" alt="KKU Logo" style="height: 60px;">
+            <div class="brand-text">
+                <div class="main-title">ศิษย์เก่าสัมพันธ์</div>
+                <div class="small text-muted">Alumni Relations of KKU</div>
+            </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="navbar navbar-expand-lg p-0">
+            <ul class="navbar-nav align-items-center">
+                <li class="nav-item active-nav"><a class="nav-link" href="index.html">หน้าหลัก</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">งานศิษย์เก่าสัมพันธ์</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">โครงสร้างองค์กร</a></li>
+                        <li><a class="dropdown-item" href="#">พันธกิจ</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">ศิษย์เก่า</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">สมาคมศิษย์เก่า</a></li>
+                        <li><a class="dropdown-item" href="#">ฐานข้อมูลศิษย์เก่า</a></li>
+                    </ul>
+                </li>
+                <!-- ส่วนที่คุณต้องการ -->
+                <li class="nav-item dropdown text-danger">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">โครงการ</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="1000.html">พี่น้องให้กองละ 1,000 บาท</a></li>
+                        <li><a class="dropdown-item" href="dream-birthday.html">โครงการทอฝันในวันเกิด</a></li>
+                    </ul>
+                </li>
+                <!-- Search Box -->
+                <li class="nav-item ms-3">
+                    <div class="search-container">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" class="search-input" placeholder="ค้นหา">
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+
+    <style>
+        body { font-family: 'Sarabun', sans-serif; background-color: #f5f5f5; }
+        .nav-custom { background: white; padding: 15px 0; border-bottom: 3px solid #eee; }
+        .main-container { background: white; padding: 40px; border-radius: 5px; box-shadow: 0 2px 15px rgba(0,0,0,0.05); }
+        
+        /* ข้อมูลหัวข้อข่าว */
+        .page-title { font-weight: bold; color: #333; margin-bottom: 10px; }
+        .post-meta { font-size: 13px; color: #888; margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .post-meta i { margin-right: 5px; }
+
+        /* ส่วนเนื้อหาตามรูปภาพ */
+        .project-content-title { color: #00AEEF; font-weight: bold; text-align: center; font-size: 24px; margin-bottom: 20px; }
+        .infographic-box1 { padding: 10px; border-radius: 5px; }
+        .infographic-box2 { padding: 10px; border-radius: 5px; }
+        .infographic-box3 { padding: 10px; border-radius: 5px; }
+        .Infographic { display: flex; justify-content: space-between; gap: 10px; }
+        .project-img1 { width: 100%; height: auto; }
+        .project-img2 { width: 100%; height: auto; }
+        .project-img3 { width: 100%; height: auto; }
+
+        /* Sidebar สไตล์เดิมเพื่อให้เข้ากับหน้าแรก */
+        .sidebar-btn {
+            background-color: #B2CC1C;
+            color: white; text-align: center; padding: 12px;
+            border-radius: 25px; font-weight: bold; display: block;
+            text-decoration: none; margin-bottom: 20px;
+        }
+        .widget-box { background: white; border: 1px solid #eee; padding: 15px; margin-bottom: 20px; }
+        .widget-header { 
+            text-align: center; font-weight: bold; margin-bottom: 15px;
+            background: repeating-linear-gradient(45deg, #f0f0f0, #f0f0f0 10px, #fff 10px, #fff 20px);
+            padding: 5px; border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+
+
+<div class="container mb-5">
+    <div class="row">
+        <!-- ฝั่งซ้าย: เนื้อหาโครงการ -->
+        <div class="col-lg-8">
+            <div class="main-container">
+                <h2 class="page-title">โครงการทอฝันในวันเกิด</h2>
+                
+                <div class="post-meta">
+                    <span><i class="far fa-calendar-alt"></i> 26 พฤศจิกายน 2562</span>
+                    <span><i class="far fa-user"></i> admin</span>
+                    <span><i class="far fa-folder"></i> เมนู, โครงการระดมทุนการศึกษา</span>
+                </div>
+
+                <div class="project-content-title">โครงการทอฝันในวันเกิด</div>
+                
+                <div class="infographic-box1">
+                    <img src="images/ทอฝัน1.jpg" class="project-img1" alt="รายละเอียดโครงการทอฝัน1">
+                </div>
+                <div class="Infographic">
+                    <div class="infographic-box2">
+                        <img src="images/ทอฝัน2.png" class="project-img2" alt="รายละเอียดโครงการทอฝัน2">
+                    </div>
+                    <div class="infographic-box3">
+                        <img src="images/ทอฝัน3.png" class="project-img3" alt="รายละเอียดโครงการทอฝัน3">
+                </div>
+                </div>
+                <div class="mt-4" style="line-height: 1.8; text-align: justify;">
+                    <p>มหาวิทยาลัยขอนแก่นเป็นสถาบันอุดมศึกษาแห่งแรกของภาคตะวันออกเฉียงเหนือ... (ใส่รายละเอียดข้อความตามรูปภาพมในส่วนหลักการและเหตุผล)</p>
+                    <p><strong>วัตถุประสงค์:</strong> เพื่อนำเงินบริจาคไปใช้เป็นทุนการศึกษาสำหรับนักศึกษามหาวิทยาลัยขอนแก่นที่ตั้งใจเรียนแต่ขาดแคลนทุนทรัพย์ โดยการทำบุญในวันเกิดของท่าน...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ฝั่งขวา: Sidebar -->
+        <div class="col-lg-4">
+            <a href="#" class="sidebar-btn shadow-sm">ตรวจสอบรายชื่อศิษย์เก่า</a>
+
+            <div class="widget-box">
+                <div class="widget-header">////////// Facebook //////////</div>
+                 <div class="fb-page" 
+                        data-href="https://www.facebook.com/AlumniRelationsKKU" 
+                        data-tabs="timeline" 
+                        data-width="" 
+                        data-height="500" 
+                        data-small-header="false" 
+                        data-adapt-container-width="true" 
+                        data-hide-cover="false" 
+                        data-show-facepile="true">
+                        <blockquote cite="https://www.facebook.com/AlumniRelationsKKU" class="fb-xfbml-parse-ignore">
+                            <a href="https://www.facebook.com/AlumniRelationsKKU">ศิษย์เก่าสัมพันธ์ มหาวิทยาลัยขอนแก่น</a>
+                        </blockquote>
+                </div>
+            </div>
+
+            <div class="widget-box">
+                <div class="widget-header">////////// ข่าวล่าสุด //////////</div>
+                <!-- รายการข่าวตัวอย่าง -->
+                <div class="d-flex mb-3">
+                    <div style="width: 80px; height: 60px; background: #eee; margin-right: 10px;"></div>
+                    <div style="font-size: 13px;">ประกาศรายชื่อศิษย์เก่าดีเด่น ประจำปี 2568...</div>
+                </div>
+                <div class="d-flex mb-3">
+                    <div style="width: 80px; height: 60px; background: #eee; margin-right: 10px;"></div>
+                    <div style="font-size: 13px;">มข.รวมใจ ทอดผ้าป่าเพื่อการศึกษา...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
