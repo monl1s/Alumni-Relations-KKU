@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KKU Alumni Store | มหาวิทยาลัยขอนแก่น</title>
+    <!-- Tailwind CSS & Alpine.js -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        kku: {
+                            brick: '#8D3124', /* แดงดินเทศ */
+                            gold: '#D4AF37',  /* ทองกัลปพฤกษ์ */
+                            bg: '#F9FAFB'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Sarabun', sans-serif; background-color: #f9fafb; }
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body x-data="alumniStore()">
+
+    <!-- 1. Header & Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-kku-brick rounded-lg flex items-center justify-center shadow-lg">
+                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L1 9l11 7 9-5.73V17h2V9L12 2z"/></svg>
+                </div>
+                <div>
+                    <span class="block text-lg font-black text-kku-brick leading-none">ALUMNI STORE</span>
+                    <span class="text-[10px] text-kku-gold font-bold tracking-widest uppercase">Khon Kaen University</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <a href="../index.html" class="flex items-center gap-1 text-gray-500 hover:text-kku-brick transition font-bold text-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                    KKU Alumni Home
+                </a>
+                <button class="relative p-2 text-kku-brick">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span class="absolute top-0 right-0 bg-kku-gold text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2. Hero & Filter Section -->
+    <header class="max-w-7xl mx-auto px-4 py-12 text-center">
+        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-4 uppercase">คอลเลกชันสินค้าศิษย์เก่า</h2>
+        <p class="text-gray-500 mb-10 max-w-lg mx-auto">เลือกซื้อสินค้าคุณภาพเพื่อเป็นส่วนหนึ่งในการระดมทุนสนับสนุนการศึกษามหาวิทยาลัยขอนแก่น</p>
+
+        <!-- Category Tabs -->
+        <div class="flex flex-wrap justify-center gap-2 mb-16">
+            <template x-for="cat in categories">
+                <button @click="activeTab = cat" 
+                        :class="activeTab === cat ? 'bg-kku-brick text-white shadow-xl scale-105' : 'bg-white text-gray-500 hover:bg-gray-50 border border-gray-100'"
+                        class="px-8 py-2.5 rounded-2xl text-sm font-bold transition-all duration-300"
+                        x-text="cat">
+                </button>
+            </template>
+        </div>
+    </header>
+
+    <!-- 3. Product Grid -->
+    <main class="max-w-7xl mx-auto px-4 pb-20">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            <template x-for="product in filteredProducts()" :key="product.id">
+                
+                <!-- Product Card -->
+                <div class="group flex flex-col h-full bg-white rounded-[2rem] border border-gray-50 shadow-sm hover:shadow-xl transition-all duration-500 group">
+                    
+                    <!-- Image Area -->
+                    <div class="relative aspect-[4/5] rounded-[1.8rem] overflow-hidden m-3">
+                        <img :src="product.img" :alt="product.title" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-black text-kku-brick uppercase tracking-tighter" x-text="product.category"></span>
+                        </div>
+                    </div>
+
+                    <!-- Details Area -->
+                    <div class="px-5 pb-6 flex flex-col flex-1 text-center items-center">
+                        <h3 class="text-lg font-bold text-gray-800 line-clamp-1 mb-1" x-text="product.title"></h3>
+                        <p class="text-xs text-gray-400 mb-4 line-clamp-2 px-2" x-text="product.desc"></p>
+
+                        <!-- Price Section -->
+                        <div class="mb-5">
+                            <span class="text-xs text-gray-400 line-through decoration-kku-brick/30" x-text="'฿' + product.oldPrice"></span>
+                            <div class="flex flex-col items-center">
+                                <span class="text-2xl font-black text-kku-brick" x-text="'฿' + product.price"></span>
+                                <span class="bg-kku-gold/10 text-kku-gold text-[9px] px-2 py-0.5 rounded-md font-black uppercase tracking-widest mt-1">ราคาพิเศษศิษย์เก่า</span>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons (เชื่อมไปหน้าต้องการ) -->
+                        <div class="w-full mt-auto flex flex-col gap-2">
+                             <!-- ปุ่มดูรายละเอียด เชื่อมโยงผ่าน href -->
+                            <a :href="product.link" class="w-full py-3 rounded-2xl border-2 border-kku-brick/10 text-kku-brick text-sm font-bold hover:bg-kku-brick/5 transition-all text-center">
+                                ตรวจสอบรายละเอียด
+                            </a>
+                            <!--
+                            <button class="w-full py-3 rounded-2xl bg-kku-brick text-white text-sm font-bold hover:bg-[#72271d] hover:shadow-lg shadow-kku-brick/20 transition-all active:scale-95">
+                                Add to Cart
+                            </button>
+                            -->
+                        </div>
+                    </div>
+                </div>
+
+            </template>
+        </div>
+    </main>
+
+    <footer class="bg-white py-12 border-t border-gray-100 text-center">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="text-gray-300 text-xs font-bold tracking-widest">© ALUMNI RELATIONS KHON KAEN UNIVERSITY</p>
+        </div>
+    </footer>
+
+    <script>
+        function alumniStore() {
+            return {
+                activeTab: 'ทั้งหมด',
+                categories: ['ทั้งหมด', 'เสื้อผ้า', 'เครื่องเขียน', 'ของสะสม'],
+                products: [
+                    {
+                        id: 1,
+                        title: "เสื้อเฟรชชี่ 69",
+                        desc: "ดีไซน์ Classic กัลปพฤกษ์ เหมาะสำหรับสวมใส่ในทุกโอกาส",
+                        price: 350,
+                        oldPrice: 450,
+                        category: "เสื้อผ้า",
+                        img: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500",
+                        link: "Alumni_Store.html" // ส่วนที่เชื่อมหน้าตามต้องการ
+                    },
+                    {
+                        id: 2,
+                        title: "กางเกงวอร์ม มข.",
+                        desc: "เนื้อผ้าใส่สบาย ยืดหยุ่นได้ดี พร้อมสกรีนสัญลักษณ์มหาวิทยาลัย",
+                        price: 590,
+                        oldPrice: 690,
+                        category: "เสื้อผ้า",
+                        img: "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=500",
+                        link: "product-detail-2.html"
+                    },
+                    {
+                        id: 3,
+                        title: "หมวกแก๊ปสกรีนลาย KKU",
+                        desc: "หมวกทรงสวย ป้องกันแสงแดดและเสริมลุคให้ดูทันสมัย",
+                        price: 250,
+                        oldPrice: 350,
+                        category: "ของสะสม",
+                        img: "https://images.unsplash.com/photo-1588850561407-ed78c282e1c7?w=500",
+                        link: "product-detail-3.html"
+                    },
+                    {
+                        id: 4,
+                        title: "กระเป๋าผ้าแคนวาส มอดินแดง",
+                        desc: "กระเป๋ารักษ์โลกใบใหญ่ ทนทาน เหมาะสำหรับการใช้งานทุกวัน",
+                        price: 190,
+                        oldPrice: 290,
+                        category: "เครื่องเขียน",
+                        img: "https://images.unsplash.com/photo-1544816153-12ad5d713297?w=500",
+                        link: "product-detail-4.html"
+                    }
+                ],
+                filteredProducts() {
+                    if (this.activeTab === 'ทั้งหมด') return this.products;
+                    return this.products.filter(p => p.category === this.activeTab);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

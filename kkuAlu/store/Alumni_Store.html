@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KKU Alumni Store - Freshy 69 Limited Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        kku: '#A7333F', // สีแดงดินเทศ มข.
+                        'kku-gold': '#D4AF37', // สีทอง
+                    },
+                    fontFamily: {
+                        sarabun: ['Sarabun', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sarabun bg-gray-50 text-gray-800">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="text-2xl font-bold text-kku">KKU ALUMNI STORE</div>
+             <!-- ปุ่มกลับหน้าหลัก (Back to Home) -->
+            <a href="index.html" class="flex items-center gap-2 px-3 py-2 bg-gray-50 text-gray-600 rounded-xl hover:bg-kku/10 hover:text-kku transition-all duration-300 group">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+                <span class="text-sm font-bold hidden md:inline">กลับหน้าหลัก</span>
+            </a>
+
+            <!-- Shopping Cart Icon with Badge -->
+            <button onclick="toggleCart()" class="relative p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-kku" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <span id="cart-badge" class="absolute -top-1 -right-1 bg-kku-gold text-white text-[10px] font-bold px-2 py-0.5 rounded-full">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            <!-- Hero Section & Product Image -->
+            <div class="relative group">
+                <div class="absolute top-4 left-4 z-10 bg-kku-gold text-white px-4 py-1.5 rounded-full text-sm font-bold shadow-lg">
+                    Limited Edition for Alumni
+                </div>
+                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" 
+                     alt="Freshy 69 T-Shirt" 
+                     class="rounded-2xl shadow-2xl w-full border-4 border-white transition group-hover:scale-[1.02]">
+            </div>
+
+            <!-- Product Details -->
+            <div class="space-y-6">
+                <div>
+                    <h1 class="text-4xl font-bold text-gray-900 border-l-8 border-kku pl-4 uppercase tracking-tighter">Freshy 69 T-Shirt</h1>
+                    <p class="text-gray-500 mt-2">เสื้อยืดคอลเลกชันพิเศษ ฉลองครบรอบ 60 ปี แห่งดินแดนร่วมเย็น</p>
+                </div>
+
+                <div class="bg-kku/5 p-6 rounded-2xl flex justify-between items-center border border-kku/20">
+                    <div>
+                        <p class="text-sm text-gray-500 line-through">ราคาบุคคลปกติ ฿450</p>
+                        <p class="text-3xl font-bold text-kku">฿350 <span class="text-lg font-normal text-kku-gold">(ราคาสมาชิกศิษย์เก่า)</span></p>
+                    </div>
+                </div>
+
+                <!-- Size Selection -->
+                <div>
+                    <label class="block text-sm font-bold mb-3 text-gray-700">เลือกไซส์เสื้อ (Size Selection)</label>
+                    <div class="flex gap-4" id="size-selector">
+                        <button onclick="selectSize(this)" class="w-12 h-12 border-2 rounded-xl flex items-center justify-center font-bold hover:border-kku hover:text-kku transition">S</button>
+                        <button onclick="selectSize(this)" class="w-12 h-12 border-2 rounded-xl flex items-center justify-center font-bold hover:border-kku hover:text-kku transition">M</button>
+                        <button onclick="selectSize(this)" class="w-12 h-12 border-2 rounded-xl flex items-center justify-center font-bold hover:border-kku hover:text-kku transition">L</button>
+                        <button onclick="selectSize(this)" class="w-12 h-12 border-2 rounded-xl flex items-center justify-center font-bold border-kku text-kku bg-kku/10">XL</button>
+                    </div>
+                </div>
+
+                <!-- Charity Impact -->
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex justify-between items-end mb-2">
+                        <span class="text-sm font-bold text-gray-700">ระดมทุนการศึกษาเพื่อรุ่นน้อง</span>
+                        <span class="text-xs text-kku">75% Collected</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-kku-gold h-2.5 rounded-full" style="width: 75%"></div>
+                    </div>
+                    <p class="text-sm mt-3 text-gray-600">💪 ทุก 1 ตัว บริจาค <span class="font-bold text-kku">50 บาท</span> เข้ากองทุนการศึกษา มข.</p>
+                </div>
+
+                <button onclick="addToCart()" class="w-full bg-kku text-white py-4 rounded-xl font-bold text-lg hover:bg-red-900 transition flex justify-center items-center gap-2">
+                    เพิ่มลงตะกร้า (Add to Cart)
+                </button>
+            </div>
+        </div>
+
+        <!-- Proof of Pride (Instagram Feed) -->
+        <section class="mt-20">
+            <h2 class="text-2xl font-bold text-center mb-8">Proof of Pride: #KKUFreshy69</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="aspect-square bg-gray-200 rounded-lg bg-[url('https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400')] bg-cover"></div>
+                <div class="aspect-square bg-gray-200 rounded-lg bg-[url('https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400')] bg-cover text-white p-2 text-xs">@P'Somchai_65</div>
+                <div class="aspect-square bg-gray-200 rounded-lg bg-[url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400')] bg-cover"></div>
+                <div class="aspect-square bg-gray-200 rounded-lg bg-[url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400')] bg-cover"></div>
+            </div>
+        </section>
+
+        <!-- Trust Badges -->
+        <div class="mt-12 flex justify-center gap-8 py-6 grayscale opacity-60">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" height="20" class="h-6">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" height="20" class="h-6">
+            <span class="text-xs font-bold self-center">SCB Safe Checkout</span>
+            <span class="text-xs font-bold self-center">Kerry Express</span>
+        </div>
+    </main>
+
+    <!-- Shopping Cart Side Drawer -->
+    <div id="cart-drawer" class="fixed inset-0 overflow-hidden z-[60] hidden">
+        <div class="absolute inset-0 bg-black/50" onclick="toggleCart()"></div>
+        <div class="absolute inset-y-0 right-0 max-w-full flex">
+            <div class="w-screen max-w-md pointer-events-auto">
+                <div class="h-full flex flex-col bg-white shadow-xl">
+                    <div class="p-6 overflow-y-auto flex-1">
+                        <div class="flex items-center justify-between mb-8">
+                            <h2 class="text-lg font-black text-kku">ตะกร้าสินค้าของท่าน</h2>
+                            <button onclick="toggleCart()" class="text-gray-400 hover:text-gray-500">
+                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Cart Items List -->
+                        <div id="cart-items" class="space-y-4">
+                            <!-- Items generate here -->
+                        </div>
+                    </div>
+
+                    <!-- Cart Footer -->
+                    <div class="border-t border-gray-200 p-6 space-y-4">
+                        <div class="flex justify-between text-base font-medium text-gray-900">
+                            <p>ยอดรวม (Total)</p>
+                            <p id="total-price">฿0</p>
+                        </div>
+                        <div class="bg-green-50 p-4 rounded-lg flex justify-between items-center text-green-700 text-sm">
+                            <span>ยอดเงินสมทบทุนการศึกษา ❤️</span>
+                            <span id="charity-total" class="font-bold">฿0</span>
+                        </div>
+                        <a href="chipping.html" class="w-full bg-kku text-white py-4 rounded-xl font-bold hover:bg-red-900 shadow-lg">ดำเนินการชำระเงิน (Checkout)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // ข้อมูลสินค้าเบื้องต้น (Mockup)
+    const productData = {
+        id: "freshy-69",
+        title: "Freshy 69 T-Shirt",
+        price: 350,
+        charity: 50,
+        img: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=200"
+    };
+
+    let cart = []; // เก็บสินค้าในรูปแบบ { id, title, price, size, qty }
+
+    function toggleCart() {
+        document.getElementById('cart-drawer').classList.toggle('hidden');
+        renderCart();
+    }
+
+    function selectSize(btn) {
+        const btns = document.querySelectorAll('#size-selector button');
+        btns.forEach(b => b.classList.remove('border-kku', 'text-kku', 'bg-kku/10'));
+        btn.classList.add('border-kku', 'text-kku', 'bg-kku/10');
+        btn.setAttribute('data-selected', 'true');
+    }
+
+    function addToCart() {
+        // หา Size ที่เลือก (ถ้าไม่มีให้ Default เป็น XL เหมือนใน HTML)
+        const selectedBtn = document.querySelector('#size-selector button.border-kku');
+        const size = selectedBtn ? selectedBtn.innerText : "XL";
+
+        // ตรวจสอบว่ามีสินค้านี้ในตะกร้าหรือยัง (เช็คทั้ง ID และ Size)
+        const existingItem = cart.find(item => item.id === productData.id && item.size === size);
+
+        if (existingItem) {
+            existingItem.qty += 1;
+        } else {
+            cart.push({ ...productData, size: size, qty: 1 });
+        }
+
+        updateBadge();
+        alert(`เพิ่มไซส์ ${size} ลงตะกร้าแล้ว!`);
+    }
+
+    function updateBadge() {
+        const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+        document.getElementById('cart-badge').innerText = totalQty;
+    }
+
+    function changeQty(index, delta) {
+        cart[index].qty += delta;
+        
+        // ถ้าจำนวนเป็น 0 ให้ลบออกจากตะกร้า
+        if (cart[index].qty <= 0) {
+            cart.splice(index, 1);
+        }
+        
+        updateBadge();
+        renderCart();
+    }
+
+    function renderCart() {
+        const list = document.getElementById('cart-items');
+        list.innerHTML = '';
+        
+        if (cart.length === 0) {
+            list.innerHTML = '<p class="text-center text-gray-400 py-10">ไม่มีสินค้าในตะกร้า</p>';
+        }
+
+        cart.forEach((item, index) => {
+            list.innerHTML += `
+                <div class="flex py-6 border-b">
+                    <div class="h-24 w-24 rounded-md border border-gray-200 flex-shrink-0 overflow-hidden">
+                        <img src="${item.img}" class="h-full w-full object-cover">
+                    </div>
+                    <div class="ml-4 flex-1 flex flex-col">
+                        <div class="flex justify-between text-base font-bold text-gray-900 leading-none">
+                            <h3>${item.title}</h3>
+                            <p class="text-kku">฿${item.price * item.qty}</p>
+                        </div>
+                        <p class="mt-1 text-sm text-gray-500 italic">ไซส์: ${item.size}</p>
+                        
+                        <div class="flex-1 flex items-end justify-between">
+                            <!-- ปุ่มเพิ่ม/ลดจำนวน -->
+                            <div class="flex items-center border rounded-lg border-gray-300">
+                                <button onclick="changeQty(${index}, -1)" class="px-3 py-1 hover:bg-gray-100 text-gray-600">-</button>
+                                <span class="px-3 py-1 font-bold text-sm border-x">${item.qty}</span>
+                                <button onclick="changeQty(${index}, 1)" class="px-3 py-1 hover:bg-gray-100 text-gray-600">+</button>
+                            </div>
+                            
+                            <button onclick="changeQty(${index}, -${item.qty})" class="text-gray-400 hover:text-red-500 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        
+        const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+        const charity = cart.reduce((sum, item) => sum + (item.qty * 50), 0);
+        
+        document.getElementById('total-price').innerText = `฿${total.toLocaleString()}`;
+        document.getElementById('charity-total').innerText = `฿${charity.toLocaleString()}`;
+    }
+</script>
+
+
+
+
+
+</body>
+</html>

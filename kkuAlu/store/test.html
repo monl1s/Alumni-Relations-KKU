@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KKU Alumni - Checkout System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { kku: { brick: '#8D3124', gold: '#D4AF37' } } } }
+        }
+    </script>
+    <style>
+        body { font-family: 'Sarabun', sans-serif; background-color: #f9fafb; }
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body x-data="shopSystem()" class="antialiased">
+
+    <!-- NAVIGATION -->
+    <nav class="bg-white border-b sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
+            <a href="#" @click="currentPage = 'catalog'" class="text-xl font-black text-kku-brick uppercase tracking-tighter">KKU Alumni Store</a>
+            <button @click="isCartOpen = true" class="relative p-2 bg-gray-50 rounded-full">
+                <svg class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor font-bold">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+                <span class="absolute -top-1 -right-1 bg-kku-gold text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-extrabold border-2 border-white" x-text="cart.length"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+
+        <!-- STEP 1: CATALOG PAGE -->
+        <div x-show="currentPage === 'catalog'" x-transition>
+            <h1 class="text-3xl font-black text-gray-900 mb-8 italic outline-title">รายการสินค้าขายดี</h1>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <template x-for="p in products" :key="p.id">
+                    <div class="bg-white rounded-[2rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all group">
+                        <img :src="p.img" class="w-full h-64 object-cover group-hover:scale-105 transition duration-500">
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold text-gray-800" x-text="p.name"></h3>
+                            <p class="text-2xl font-black text-kku-brick mt-2" x-text="'฿' + p.price"></p>
+                            <button @click="addToCart(p)" class="w-full mt-4 bg-kku-brick text-white py-3 rounded-xl font-bold hover:bg-black transition transform active:scale-95">
+                                เพิ่มลงตะกร้า
+                            </button>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <!-- STEP 2: CHECKOUT PAGE (ดึงข้อมูลจากตะกร้ามาแสดงตรงนี้) -->
+        <div x-show="currentPage === 'checkout'" x-cloak x-transition>
+            <div class="flex items-center gap-2 mb-8 cursor-pointer text-gray-400 hover:text-kku-brick" @click="currentPage = 'catalog'">
+                <svg class="w-5 h-5 font-bold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                <span class="font-bold">กลับไปเลือกสินค้าเพิ่ม</span>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                <!-- ฝั่งกรอกข้อมูล -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="bg-white p-8 rounded-[2.5rem] shadow-sm border">
+                        <h2 class="text-xl font-black mb-6">ที่อยู่ในการจัดส่ง</h2>
+                        <div class="space-y-4">
+                            <input type="text" x-model="form.name" placeholder="ชื่อ-นามสกุล" class="w-full p-4 bg-gray-50 rounded-2xl outline-none focus:ring-2 focus:ring-kku-brick/20 font-bold">
+                            <input type="tel" x-model="form.tel" placeholder="เบอร์โทรศัพท์" class="w-full p-4 bg-gray-50 rounded-2xl outline-none focus:ring-2 focus:ring-kku-brick/20 font-bold">
+                            <textarea x-model="form.address" placeholder="ที่อยู่โดยละเอียด" class="w-full p-4 bg-gray-50 rounded-2xl outline-none focus:ring-2 focus:ring-kku-brick/20 font-bold h-32"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ฝั่งสรุปยอดเงิน (ดึงข้อมูลมาจากตะกร้า) -->
+                <div class="lg:col-span-5 sticky top-24">
+                    <div class="bg-white p-8 rounded-[2.5rem] shadow-2xl border-t-8 border-kku-brick">
+                        <h2 class="text-xl font-black mb-6 italic text-gray-800">สรุปรายการคำสั่งซื้อ</h2>
+                        
+                        <!-- รายการสินค้าที่ดึงมาจาก Cart -->
+                        <div class="space-y-4 mb-6 max-h-60 overflow-y-auto pr-2">
+                            <template x-for="(item, index) in cart" :key="index">
+                                <div class="flex justify-between items-center gap-4">
+                                    <div class="flex items-center gap-3">
+                                        <img :src="item.img" class="w-12 h-12 rounded-lg object-cover border">
+                                        <span class="text-sm font-bold text-gray-600 truncate w-32 md:w-48" x-text="item.name"></span>
+                                    </div>
+                                    <span class="font-black text-gray-900" x-text="'฿' + item.price"></span>
+                                </div>
+                            </template>
+                        </div>
+
+                        <div class="border-t border-dashed pt-4 space-y-3">
+                            <div class="flex justify-between text-sm text-gray-400">
+                                <span>ค่าจัดส่ง (Standard)</span>
+                                <span class="font-bold">฿50</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-kku-gold/10 rounded-2xl border border-kku-gold/20">
+                                <span class="text-[10px] font-black text-kku-gold uppercase tracking-widest leading-none">สมทบทุนการศึกษา มข. 10%</span>
+                                <span class="text-xs font-black text-kku-brick" x-text="'฿' + (subtotal() * 0.1).toFixed(2)"></span>
+                            </div>
+                            <div class="flex justify-between items-end pt-4">
+                                <span class="font-black text-gray-800 text-lg">ยอดชำระสุทธิ</span>
+                                <span class="text-4xl font-black text-kku-brick leading-none tracking-tighter" x-text="'฿' + (subtotal() + 50)"></span>
+                            </div>
+                        </div>
+
+                        <button @click="confirmOrder()" class="w-full mt-8 bg-kku-brick text-white py-5 rounded-2xl font-black text-xl hover:bg-black transition shadow-xl">
+                            ยืนยันการชำระเงิน
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 3: SUCCESS PAGE -->
+        <div x-show="currentPage === 'success'" x-cloak x-transition class="max-w-lg mx-auto text-center py-10">
+            <div class="bg-white p-12 rounded-[4rem] shadow-2xl border">
+                <div x-show="!isPaid" class="space-y-6">
+                    <div class="w-16 h-16 border-4 border-t-kku-brick rounded-full animate-spin mx-auto"></div>
+                    <h2 class="text-xl font-bold">กำลังสร้างรายการชำระเงิน...</h2>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=KKUPAY" class="mx-auto rounded-xl shadow-lg">
+                    <p class="text-3xl font-black text-kku-brick" x-text="'฿' + (subtotal() + 50)"></p>
+                </div>
+                <div x-show="isPaid" class="space-y-6">
+                    <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto shadow-inner text-3xl">✓</div>
+                    <h2 class="text-3xl font-black">ชำระเงินสำเร็จ!</h2>
+                    <p class="text-gray-400 font-bold">ขอบคุณศิษย์เก่าที่ร่วมสนับสนุน <br> เลขพัสดุ: KKU-ALMN-8842</p>
+                    <button @click="resetStore()" class="w-full bg-gray-900 text-white py-4 rounded-xl font-bold">กลับหน้าหลัก</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- SIDE-CART DRAWER -->
+    <div x-cloak x-show="isCartOpen" class="fixed inset-0 z-[60]">
+        <div @click="isCartOpen = false" class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+        <div x-show="isCartOpen" x-transition:enter="transition transform duration-300" x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0" class="absolute right-0 top-0 h-full w-full max-w-sm bg-white shadow-2xl p-8 flex flex-col">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-black text-kku-brick italic">ตะกร้าของคุณ</h2>
+                <button @click="isCartOpen = false" class="text-gray-400 font-bold text-2xl">×</button>
+            </div>
+            <div class="flex-1 overflow-y-auto space-y-4">
+                <template x-for="(item, index) in cart" :key="index">
+                    <div class="flex gap-4 border-b pb-4 items-center">
+                        <img :src="item.img" class="w-16 h-16 rounded-xl object-cover border">
+                        <div class="flex-1">
+                            <h4 class="text-sm font-bold truncate w-32" x-text="item.name"></h4>
+                            <p class="text-kku-brick font-black" x-text="'฿' + item.price"></p>
+                        </div>
+                        <button @click="cart.splice(index,1)" class="text-gray-300 hover:text-red-500 font-bold text-xs underline">ลบ</button>
+                    </div>
+                </template>
+            </div>
+            <div class="pt-6 border-t font-bold">
+                <div class="flex justify-between text-lg mb-4"><span>รวมเบื้องต้น:</span><span x-text="'฿' + subtotal()"></span></div>
+                <button @click="isCartOpen = false; currentPage = 'checkout'" class="w-full bg-kku-brick text-white py-4 rounded-2xl font-black text-lg shadow-lg shadow-red-900/10">ชำระเงิน</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function shopSystem() {
+            return {
+                currentPage: 'catalog',
+                isCartOpen: false,
+                isPaid: false,
+                cart: [],
+                form: { name: '', tel: '', address: '' },
+                products: [
+                    { id: 1, name: "เสื้อเชิ้ตศิษย์เก่า KKU (Limited)", price: 450, img: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=400" },
+                    { id: 2, name: "หมวกแก๊ปตราอิฐแดง มข.", price: 350, img: "https://images.unsplash.com/photo-1588850561407-ed78c282e1c7?w=400" },
+                    { id: 3, name: "กระติกน้ำสแตนเลสสกรีนชื่อ", price: 590, img: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400" }
+                ],
+                addToCart(product) {
+                    this.cart.push({...product});
+                    this.isCartOpen = true;
+                },
+                subtotal() {
+                    return this.cart.reduce((sum, item) => sum + item.price, 0);
+                },
+                confirmOrder() {
+                    if(!this.form.name || !this.form.tel || !this.form.address) return alert("กรุณากรอกข้อมูลให้ครบ!");
+                    this.currentPage = 'success';
+                    setTimeout(() => this.isPaid = true, 3000);
+                },
+                resetStore() {
+                    this.cart = [];
+                    this.currentPage = 'catalog';
+                    this.isPaid = false;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
